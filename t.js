@@ -1,5 +1,5 @@
 // conan_kinhmat
-var iVersion = 150;
+var iVersion = "3.002";
 var iIgnoreTime = parseInt( localStorage.getItem("ignore-time"), 10 );
 
 var bAuto2 = false;
@@ -1504,6 +1504,20 @@ function step_1(){
         // console.log('id: ' + $iChannelID )
         // console.dir( 'https://live.shopee.vn/universal-link/middle-page?type=live&id='+$iChannelID+'&deep_and_deferred=1&room_title='+sRoomTitle+'&room_host='+sRoomHost+'&room_coin='+sRoomCoin+'&room_view='+sRoomViews+'&acu='+accu+'#share' )
         window.location.href = 'https://live.shopee.vn/universal-link/middle-page?type=live&id='+$iChannelID+'&deep_and_deferred=1&room_title='+sRoomTitle+'&room_host='+sRoomHost+'&room_coin='+sRoomCoin+'&room_view='+sRoomViews+'&acu='+accu+'#share'
+
+        if( sRoomCoin != "N/A" ){
+            localStorage.setItem('pause-auto', true)
+            localStorage.setItem('checkRoom', true)
+            localStorage.setItem('idToCheck', $iChannelID)
+            localStorage.setItem('iCoinToCheck', sRoomCoin)
+            localStorage.setItem('roomValid', 0)
+            localStorage.setItem('iRoomChecked', 0)
+           
+            setTimeout(function(){
+                window.location.href = window.location.href
+            },3000)
+        }
+
     }
 }
 
